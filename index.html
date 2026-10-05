@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Sejal ❤️</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Arial,sans-serif}
+body{
+  overflow:hidden;
+  background:radial-gradient(circle at top,#ffb6d9,#ff5c9a 45%,#7b164b);
+  color:white;
+  display:flex;align-items:center;justify-content:center;
+}
+.card{
+  width:min(92vw,650px); padding:42px 25px; text-align:center;
+  background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.35);
+  border-radius:30px; backdrop-filter:blur(12px);
+  box-shadow:0 20px 60px rgba(0,0,0,.25); position:relative; z-index:2;
+}
+.heart{font-size:75px;animation:pulse 1.2s infinite}
+h1{font-size:clamp(38px,9vw,72px);margin:8px 0;color:#fff}
+h2{font-weight:400;font-size:clamp(20px,5vw,30px);margin:10px 0 25px}
+p{font-size:18px;line-height:1.6}
+button{
+  border:0;border-radius:999px;padding:14px 28px;font-size:17px;
+  background:white;color:#d52d73;font-weight:bold;cursor:pointer;
+  box-shadow:0 8px 25px rgba(0,0,0,.2)
+}
+#message{display:none;margin-top:22px;font-size:19px}
+.f{position:fixed;top:-30px;font-size:24px;animation:fall linear forwards;z-index:1}
+@keyframes pulse{50%{transform:scale(1.15)}}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:.1}}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="heart">❤️</div>
+  <h1>Happy Birthday</h1>
+  <h2>Sejal 🎂✨</h2>
+  <p>Wishing you a day filled with happiness, beautiful moments and lots of smiles. 💖</p>
+  <button onclick="showMessage()">Open Your Surprise 💝</button>
+  <div id="message">
+    ✨ You are special, you are amazing, and you deserve all the happiness in the world! ✨<br><br>
+    Once again... <b>Happy Birthday Sejal! ❤️</b>
+  </div>
+</div>
+<script>
+function showMessage(){
+  document.getElementById('message').style.display='block';
+  for(let i=0;i<45;i++){
+    const e=document.createElement('div');
+    e.className='f';
+    e.textContent=['❤️','💖','💕','✨','🎉'][Math.floor(Math.random()*5)];
+    e.style.left=Math.random()*100+'vw';
+    e.style.animationDuration=(3+Math.random()*4)+'s';
+    e.style.fontSize=(18+Math.random()*25)+'px';
+    document.body.appendChild(e);
+    setTimeout(()=>e.remove(),7500);
+  }
+}
+</script>
+</body>
+</html>

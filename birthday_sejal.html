@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Happy Birthday Sejal ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at top,#5b174b,#160817 55%,#050308);color:#fff;font-family:system-ui,-apple-system,Segoe UI,sans-serif;overflow:hidden}
+.screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;position:relative}
+.card{width:min(92vw,520px);padding:34px 24px;border:1px solid #ffffff22;border-radius:28px;background:#ffffff0d;backdrop-filter:blur(12px);box-shadow:0 20px 70px #0008}
+h1{font-size:clamp(34px,10vw,58px);margin:8px 0;color:#fff}
+h2{font-size:28px;margin:10px 0}
+p{font-size:18px;line-height:1.6;color:#ffe9f5}
+input{width:180px;padding:14px;border-radius:14px;border:1px solid #ffffff44;background:#0005;color:white;text-align:center;font-size:22px;letter-spacing:5px;outline:none}
+button{margin-top:16px;padding:13px 25px;border:0;border-radius:999px;background:#ff4f9a;color:#fff;font-size:17px;font-weight:700;cursor:pointer}
+.hidden{display:none}
+.heart{position:absolute;font-size:24px;animation:float 7s linear infinite;opacity:.75}
+@keyframes float{from{transform:translateY(110vh) rotate(0deg);opacity:0}15%{opacity:.8}to{transform:translateY(-15vh) rotate(360deg);opacity:0}}
+.pop{animation:pop .9s ease both}
+@keyframes pop{0%{transform:scale(.6);opacity:0}70%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
+.glow{animation:glow 2s ease-in-out infinite alternate}
+@keyframes glow{from{text-shadow:0 0 8px #ff5fa8}to{text-shadow:0 0 28px #ff8bc1,0 0 45px #ff4f9a}}
+.type{min-height:110px}
+.small{font-size:14px;color:#ffd3e7;margin-top:18px}
+</style>
+</head>
+<body>
+<div id="hearts"></div>
+
+<section id="lock" class="screen">
+  <div class="card pop">
+    <div style="font-size:54px">🎁</div>
+    <h2>A little birthday surprise</h2>
+    <p>Enter the secret pass code to open it 💗</p>
+    <input id="code" type="password" inputmode="numeric" maxlength="4" placeholder="••••">
+    <br><button onclick="unlock()">Open Surprise ✨</button>
+    <div id="error" class="small hidden">Wrong code — try again 💕</div>
+  </div>
+</section>
+
+<section id="birthday" class="screen hidden">
+  <div class="card pop">
+    <div style="font-size:60px">🎂💖</div>
+    <h1 class="glow">Happy Birthday Sejal</h1>
+    <p>May your day be filled with smiles, beautiful moments, and lots of happiness. ✨</p>
+    <p class="type" id="typed"></p>
+    <button onclick="showMessage()">Continue 💌</button>
+  </div>
+</section>
+
+<section id="message" class="screen hidden">
+  <div class="card pop">
+    <div style="font-size:52px">🌹✨</div>
+    <h2 class="glow">A lovely birthday message</h2>
+    <p>
+      May every new day bring you a reason to smile,
+      every dream take one step closer,
+      and every beautiful moment stay in your heart.
+      Wishing you a truly special birthday, Sejal. ❤️
+    </p>
+    <p>Keep smiling, keep shining, and enjoy your special day. 💕</p>
+  </div>
+</section>
+
+<script>
+const CODE="2803";
+function unlock(){
+  if(document.getElementById("code").value===CODE){
+    document.getElementById("lock").classList.add("hidden");
+    document.getElementById("birthday").classList.remove("hidden");
+    typeText("Today is all about celebrating you… may this birthday be as lovely and special as you are. ❤️");
+  }else{
+    document.getElementById("error").classList.remove("hidden");
+  }
+}
+function typeText(text){
+  let i=0, el=document.getElementById("typed");
+  el.textContent="";
+  const timer=setInterval(()=>{el.textContent+=text[i++];if(i>=text.length)clearInterval(timer)},45);
+}
+function showMessage(){
+  document.getElementById("birthday").classList.add("hidden");
+  document.getElementById("message").classList.remove("hidden");
+}
+for(let i=0;i<24;i++){
+  const s=document.createElement("span");s.className="heart";s.textContent=Math.random()>.5?"♥":"✦";
+  s.style.left=Math.random()*100+"vw";s.style.animationDelay=(-Math.random()*7)+"s";s.style.animationDuration=(5+Math.random()*5)+"s";
+  document.getElementById("hearts").appendChild(s);
+}
+document.getElementById("code").addEventListener("keydown",e=>{if(e.key==="Enter")unlock()});
+</script>
+</body>
+</html>
